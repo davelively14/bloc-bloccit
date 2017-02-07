@@ -17,6 +17,9 @@ posts = Post.all
   )
 end
 
+post = Post.find_or_create_by(title: "An idempotent tail", body: "Just once. That's all.")
+Comment.find_or_create_by(body: "Unique body for my idempotent post", post: post)
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
