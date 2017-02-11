@@ -40,7 +40,7 @@ class TopicsController < ApplicationController
       redirect_to @topic, notice: "Topic was updated."
     else
       flash.now[:alert] = "Error saving topic. Please try again."
-      redirect_to :edit
+      render :edit
     end
   end
 
