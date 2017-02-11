@@ -31,3 +31,5 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 
 gem 'shoulda'
+
+gem 'bcrypt'
