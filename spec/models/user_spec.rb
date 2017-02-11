@@ -22,6 +22,12 @@ RSpec.describe User, type: :model do
     it "should have name and email attributes" do
       expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.io")
     end
+
+    it "should title case the name" do
+      title_check = User.create!(name: "john adams", email: "jadams@bloccit.io", password: "password")
+      expect(user).to have_attributes(name: "Bloccit User")
+      expect(title_check).to have_attributes(name: "John Adams")
+    end
   end
 
   describe "invalid user" do
