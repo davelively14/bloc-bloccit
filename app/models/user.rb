@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
   # methods to set and authenticate.
   has_secure_password
 
-  enum role: [:member, :admin]
+  enum role: [:member, :admin, :moderator]
 end
