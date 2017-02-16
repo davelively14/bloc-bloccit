@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # additional post routes, as we've nested those under topics.
   resources :posts, only: [] do
     resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
 
     post '/up-vote' => 'votes#up_vote', as: :up_vote
     post '/down-vite' => 'votes#down_vote', as: :down_vote

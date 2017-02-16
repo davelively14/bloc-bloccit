@@ -33,3 +33,5 @@ gem 'bootstrap-sass'
 gem 'shoulda'
 
 gem 'bcrypt'
+
+gem 'figaro', '1.0'
