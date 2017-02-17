@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" http-equiv="content-type">
+  </head>
+  <body>
+    <h1>Congrats! Your new post is live!</h1>
+    <small>"<%= @post.title %>" is up!</small>
+    <p>Your new post is live and resides <%= link_to "here.", topic_post_url(@post.topic, @post) %> When other users comment on your post, you will be notified at this email address. To turn that off, simply "unfavorite" your post.</p>
+  </body>
+</html>

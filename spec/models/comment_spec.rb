@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.io", password: "helloworld") }
+  let(:other_user) { User.create!(name: "Bloccit User2", email: "user2@bloccit.io", password: "helloworld") }
   let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
   let(:comment) { Comment.create!(body: 'Comment body', post: post, user: user) }
 
@@ -23,15 +24,13 @@ RSpec.describe Comment, type: :model do
     end
 
     it "send an email to users who have favorited the post" do
-      user.favorites.create(post: post)
-      expect(FavoriteMailer).to receive(:new_comment).with(user, post, @another_comment).and_return(double(deliver_now: true))
-
+      other_user.favorites.create(post: post)
+      expect(FavoriteMailer).to receive(:new_comment).with(other_user, post, @another_comment).and_return(double(deliver_now: true))
       @another_comment.save!
     end
 
     it "does not send an email to users who haven't favorited the post" do
-      expect(FavoriteMailer).to_not receive(:new_comment)
-
+      expect(FavoriteMailer).to_not receive(:new_comment).with(other_user, post, @another_comment)
       @another_comment.save!
     end
   end

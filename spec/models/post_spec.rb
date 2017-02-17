@@ -74,4 +74,11 @@ RSpec.describe Post, type: :model do
       expect(post.rank).to eq(old_rank - 1)
     end
   end
+
+  describe "#add_fave" do
+    it "creates a favorite for user and post" do
+      new_post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+      expect(new_post.favorites.first.user).to eq(user)
+    end
+  end
 end

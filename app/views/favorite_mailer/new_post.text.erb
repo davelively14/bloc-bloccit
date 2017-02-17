@@ -1,0 +1,6 @@
+Your new post, "<%= @post.title %>" is live!
+<%= "=" * (@post.title.length + 12) %>
+
+<%= @post.body %>
+
+Visit online at: <%= topic_post_url(@post.topic, @post) %>
